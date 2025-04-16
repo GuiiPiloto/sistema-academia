@@ -260,7 +260,7 @@
                             <td><?= htmlspecialchars($aluno['cpf']) ?></td>
                             <td><?= htmlspecialchars($aluno['telefone']) ?></td>
                             <td><?= htmlspecialchars($aluno['nome_plano'] ?? 'Sem Plano') ?></td>
-                            <td><?= htmlspecialchars($aluno['data_cadastro']) ?></td>
+                            <td><?= $aluno['data_cadastro'] ? htmlspecialchars(date_format(date_create($aluno['data_cadastro']), 'd/m/Y')) : 'Não definida' ?></td> 
                             <td>
                                 <form method="POST" style="display:inline;">
                                     <input type="hidden" name="delete_id" value="<?= $aluno['id_aluno'] ?>">

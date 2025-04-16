@@ -232,7 +232,7 @@
                     <?php foreach ($frequencias as $frequencia): ?>
                         <tr>
                             <td><?= htmlspecialchars($frequencia['nome_aluno']) ?></td>
-                            <td><?= htmlspecialchars($frequencia['data_entrada']) ?></td>
+                            <td><?= $frequencia['data_entrada'] ? htmlspecialchars(date_format(date_create($frequencia['data_entrada']), 'd/m/Y H:i')) : 'Não definida' ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

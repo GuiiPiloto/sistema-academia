@@ -256,8 +256,8 @@
                         <tr>
                             <td><?= htmlspecialchars($pagamento['nome_aluno']) ?></td>
                             <td><?= htmlspecialchars($pagamento['valor']) ?></td>
-                            <td><?= htmlspecialchars($pagamento['data_vencimento'] ?? 'Não definida') ?></td>
-                            <td><?= $pagamento['status'] === 'Pago' ? 'Pago' : 'Pendente' ?></td>
+                            <td><?= $pagamento['data_vencimento'] ? htmlspecialchars(date_format(date_create($pagamento['data_vencimento']), 'd/m/Y')) : 'Não definida' ?></td>
+                            <td>Pago</td>
                             <td>
                                     <form method="POST" style="display:inline;">
                                         <input type="hidden" name="delete_id" value="<?= $pagamento['id_pagamento'] ?>">
