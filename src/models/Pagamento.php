@@ -31,9 +31,10 @@ class Pagamento {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function marcarComoPago($id_pagamento) {
-        $stmt = $this->conn->prepare("UPDATE pagamentos SET status = 'Pago' WHERE id_pagamento = :id");
+    public function excluir($id_pagamento) {
+        $stmt = $this->conn->prepare("DELETE FROM pagamentos WHERE id_pagamento = :id");
         $stmt->execute(['id' => $id_pagamento]);
         return $stmt->rowCount() > 0;
     }
+     
 }

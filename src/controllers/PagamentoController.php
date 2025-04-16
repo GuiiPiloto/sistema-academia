@@ -33,18 +33,20 @@ class PagamentoController {
         return $pagamento->listar();
     }
 
-    public function marcarComoPago() {
-        $id_pagamento = $_POST['mark_paid_id'] ?? '';
-
+    public function excluir() {
+        $id_pagamento = $_POST['delete_id'] ?? '';
+    
         try {
             $pagamento = new Pagamento();
-            if ($pagamento->marcarComoPago($id_pagamento)) {
-                $GLOBALS['mensagem'] = "Pagamento marcado como pago!";
+            if ($pagamento->excluir($id_pagamento)) {
+                $_SESSION['mensagem'] = "Pagamento excluído com sucesso!";
+                header("Location: index.php?page=pagamentos_lista");
+                exit;
             } else {
-                $GLOBALS['erro'] = "Erro ao marcar pagamento como pago.";
+                $_SESSION['erro'] = "Falha ao excluir o pagamento.";
             }
         } catch (Exception $e) {
-            $GLOBALS['erro'] = "Erro: " . $e->getMessage();
+            $_SESSION['erro'] = "Erro: " . $e->getMessage();
         }
-    }
+    } 
 }

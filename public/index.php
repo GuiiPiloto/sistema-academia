@@ -86,8 +86,8 @@ switch ($page) {
             header("Location: /sistema-academia/public/index.php");
             exit;
         }
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mark_paid_id'])) {
-            $pagamentosController->marcarComoPago();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
+            $pagamentosController->excluir();
         }
         $pagamentos = $pagamentosController->listar();
         require_once __DIR__ . '/../src/views/pagamentos_lista.php';

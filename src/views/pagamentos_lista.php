@@ -233,15 +233,14 @@
     </div>
     <div class="main-content">
         <h2>Lista de Pagamentos</h2>
-        <?php if (isset($mensagem)): ?>
-            <div class="alert alert-success"><?= htmlspecialchars($mensagem) ?></div>
+        <?php if (isset($_SESSION['mensagem'])): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($_SESSION['mensagem']) ?></div>
+         <?php unset($_SESSION['mensagem']); ?>
         <?php endif; ?>
-        <?php if (isset($erro)): ?>
-            <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
+        <?php if (isset($_SESSION['erro'])): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['erro']) ?></div>
+        <?php unset($_SESSION['erro']); ?>
         <?php endif; ?>
-        <?php if (empty($pagamentos)): ?>
-            <p>Nenhum pagamento registrado.</p>
-        <?php else: ?>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -257,21 +256,18 @@
                         <tr>
                             <td><?= htmlspecialchars($pagamento['nome_aluno']) ?></td>
                             <td><?= htmlspecialchars($pagamento['valor']) ?></td>
-                            <td><?= htmlspecialchars($pagamento['data_pagamento']) ?></td>
-                            <td><?= $pagamento['pago'] ? 'Pago' : 'Pendente' ?></td>
+                            <td><?= htmlspecialchars($pagamento['data_vencimento'] ?? 'Não definida') ?></td>
+                            <td><?= $pagamento['status'] === 'Pago' ? 'Pago' : 'Pendente' ?></td>
                             <td>
-                                <?php if (!$pagamento['pago']): ?>
                                     <form method="POST" style="display:inline;">
-                                        <input type="hidden" name="mark_paid_id" value="<?= $pagamento['id_pagamento'] ?>">
-                                        <button type="submit" class="btn btn-primary btn-sm">Marcar como Pago</button>
+                                        <input type="hidden" name="delete_id" value="<?= $pagamento['id_pagamento'] ?>">
+                                        <button type="submit" class="btn btn-danger btn-sm">Excluir Pagamento</button>
                                     </form>
-                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php endif; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>

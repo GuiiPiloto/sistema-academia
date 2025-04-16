@@ -259,7 +259,7 @@
                             <td><?= htmlspecialchars($aluno['nome']) ?></td>
                             <td><?= htmlspecialchars($aluno['cpf']) ?></td>
                             <td><?= htmlspecialchars($aluno['telefone']) ?></td>
-                            <td><?= htmlspecialchars($aluno['plano']) ?></td>
+                            <td><?= htmlspecialchars($aluno['nome_plano'] ?? 'Sem Plano') ?></td>
                             <td><?= htmlspecialchars($aluno['data_cadastro']) ?></td>
                             <td>
                                 <form method="POST" style="display:inline;">

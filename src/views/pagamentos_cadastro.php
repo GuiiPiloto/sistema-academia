@@ -316,10 +316,10 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="data_pagamento" class="form-label">Data do Pagamento</label>
+                <label for="data_vencimento" class="form-label">Data do Pagamento</label>
                 <div class="input-group">
                     <i class="bi bi-calendar"></i>
-                    <input type="date" class="form-control" id="data_pagamento" name="data_pagamento" required>
+                    <input type="date" class="form-control" id="data_vecimento" name="data_vencimento" required>
                     <span class="underline"></span>
                 </div>
             </div>
